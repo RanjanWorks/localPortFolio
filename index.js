@@ -3,7 +3,17 @@ let projects = document.getElementById('projects');
 let input = document.getElementById('input');
 let form = document.getElementById('form')
 let allProjects = []; // Array to store fetched project data
-
+let randomAnimation = [
+  "fade-in",
+  "fade-up",
+  "fade-down",
+  "fade-right",
+  "fade-left",
+  "flip-left",
+  "flip-right",
+  "flip-up",
+  "flip-down"
+]
 async function fetchData() {
   const res = await fetch(url);
   const results = await res.json();
@@ -22,10 +32,11 @@ async function fetchData() {
 
 function renderProjects(data) {
   projects.innerHTML = ''; // Clear existing content before rendering
-
   data.forEach(d => {
+   let rand = Math.floor(Math.random()*randomAnimation.length)
+    let name = randomAnimation[rand]
     let projectData = `
-    <a target="_blank" href="${d.LINK}" class="notification">
+    <a data-aos="${name}" target="_blank" href="${d.LINK}" class="notification">
       <div class="notiglow"></div>
       <div class="notiborderglow"></div>
       <div class="notititle">${d.NAME.toUpperCase()}</div>

@@ -72,9 +72,9 @@ fetchData();
 
 
 form.addEventListener('submit',(e)=>{
-  setTimeout(()=>{
+  
     window.location.href = "https://vebpath.github.io/localPortFolio/"
-  },1000)
+
 })
 
 
